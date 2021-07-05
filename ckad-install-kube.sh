@@ -10,7 +10,7 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 
 # Turn off Swap 
-sudo vi /etc/fstab
+sudo sed -i '/ swap / s/^/#/' /etc/fstab
 # Make swapfile a comment
 sudo swapoff -a
 
