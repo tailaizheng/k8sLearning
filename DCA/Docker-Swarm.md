@@ -30,7 +30,38 @@ LISTEN   0      128                         *:7946                      *:*
 ``` docker swarm init --advertise-addr <MANAGER-IP>```
 use ``` docker swarm init ``` when host only have one NIC .
 
+Add work node :
+```
+docker swarm join --token SWMTKN-1-0d5x6m0xm1fq5j9dzi2o4erpwxffjdd8wi7vt5f6g8agv4lvbp-cmq0yqfoci4ajejs7x9gn8e5o 192.168.0.28:2377
+## on all node need to join the swarm 
+```
 
+Verify node on Swarm Leader and Promote work node to manage node
+```
+$ docker node ls
+ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+whtsvmmle4x4mzi28r0boyhtd *   node1      Ready     Active         Leader           20.10.0
+z3fjqs2270zspp86n1gtzq95m     node2      Ready     Active                          20.10.0
+j8925yteonrg26793cesz4b72     node3      Ready     Active                          20.10.0
+[node1] (local) root@192.168.0.28 ~
+$ docker node promote --help 
+
+Usage:  docker node promote NODE [NODE...]
+
+Promote one or more nodes to manager in the swarm
+[node1] (local) root@192.168.0.28 ~
+$ docker node promote z3fjqs2270zspp86n1gtzq95m
+Node z3fjqs2270zspp86n1gtzq95m promoted to a manager in the swarm.
+[node1] (local) root@192.168.0.28 ~
+$ docker node promote j8925yteonrg26793cesz4b72
+Node j8925yteonrg26793cesz4b72 promoted to a manager in the swarm.
+[node1] (local) root@192.168.0.28 ~
+$ docker node ls
+ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+whtsvmmle4x4mzi28r0boyhtd *   node1      Ready     Active         Leader           20.10.0
+z3fjqs2270zspp86n1gtzq95m     node2      Ready     Active         Reachable        20.10.0
+j8925yteonrg26793cesz4b72     node3      Ready     Active         Reachable        20.10.0
+```
 
 ```bash 
 qa@k8s-01:~$ docker swarm ca
