@@ -5,10 +5,9 @@ For all controller and workers
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
-# Install selected version (here 1.21.2-00)
+# Install selected version (here 1.22.1-00)
 sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
-
+sudo apt-get install -y kubectl=1.22.1-00 kubeadm=1.22.1-00 kubelet=1.22.1-00
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 Turn off Swap 
