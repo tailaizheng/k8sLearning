@@ -15,9 +15,24 @@ v1beta1.metrics.k8s.io                 kube-system/metrics-server   False (Missi
 
 ```
 
+# use MicroK8s 
+
+$ sudo snap install microk8s --classic
+Add Nodes:
+Enable addon
+
+
 # use minikube 
 
 
+# use kind 
+
+## install kind
+
+## use kind build cluster
+
+## load image into cluster
+> By default the cluster name is "kind" , if you choose other name or build many cluster , need to use ```--name tiny``` to indicate which cluster you want to load image 
 
 # use kubeadm
 
@@ -31,6 +46,11 @@ kubeadm join 172.18.42.31:6443 --token 2qpeuw.3h0rr4ts66zd7z19 \
 You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
 ```
 ## kubeadm + cri
+
+The Docker official support has been stoar to 2021/Dec -- [Detail](https://kubernetes.io/blog/2020/12/02/dont-panic-kubernetes-and-docker/)
+It's not simple , for new create cluster may simple to user cri as default container engine but for old (already run in production) ex: VMware has 
+TKGI which is actually run ubuntu 1604 + docker on ESXi
+
 
 ## kubeadm + docker
 
