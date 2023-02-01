@@ -1,3 +1,7 @@
+# Version 
+At Jan/2023 the CKA exam base on 1.26
+[Kubernetes 1.26 release notes](https://kubernetes.io/blog/2022/12/09/kubernetes-v1-26-release/)
+
 # use kubernetes playground 
 That's a easy access via internet , run in browser . 
 ```
